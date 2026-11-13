@@ -26,3 +26,4 @@ Relatório_gráfico/
     ├── style.css        # Arquivo de estilização e layout
     ├── script.js        # Lógica de importação, filtros e gráficos
     └── vendas.xlsx      # Planilha de dados gerenciais em formato Excel
+```
