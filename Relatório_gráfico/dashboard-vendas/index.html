@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Vendas</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bibliotecas SheetJS e Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="topo">
+        <div>
+            <h1>Dashboard de Vendas</h1>
+            <p>Relatório gerencial de vendas de eletrônicos</p>
+        </div>
+        <div>
+            <input type="file" id="input-excel" accept=".xlsx, .xls" hidden>
+            <button id="btn-importar" class="btn-azul">📁 Importar Excel</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Filtros -->
+        <section class="card filtros">
+            <div class="campo-filtro">
+                <label for="filtro-regiao">Região</label>
+                <select id="filtro-regiao">
+                    <option value="">Todas as regiões</option>
+                </select>
+            </div>
+            <div class="campo-filtro">
+                <label for="filtro-produto">Produto</label>
+                <select id="filtro-produto">
+                    <option value="">Todos os produtos</option>
+                </select>
+            </div>
+            <button id="btn-limpar" class="btn-escuro">Limpar filtros</button>
+        </section>
+
+        <!-- Cards de Resumo (KPIs) -->
+        <section class="kpis">
+            <div class="card kpi">
+                <span>Faturamento total</span>
+                <strong id="kpi-faturamento">R$ 0,00</strong>
+                <small>Valor total das vendas</small>
+            </div>
+            <div class="card kpi">
+                <span>Unidades vendidas</span>
+                <strong id="kpi-unidades">0</strong>
+                <small>Quantidade de produtos</small>
+            </div>
+            <div class="card kpi">
+                <span>Total de vendas</span>
+                <strong id="kpi-pedidos">0</strong>
+                <small>Registros encontrados</small>
+            </div>
+            <div class="card kpi">
+                <span>Frete total</span>
+                <strong id="kpi-frete">R$ 0,00</strong>
+                <small>Custo de frete</small>
+            </div>
+        </section>
+
+        <!-- Gráficos -->
+        <section class="graficos">
+            <div class="card">
+                <h3>Faturamento por região</h3>
+                <canvas id="grafico-regiao"></canvas>
+            </div>
+            <div class="card">
+                <h3>Vendas por produto</h3>
+                <canvas id="grafico-produto"></canvas>
+            </div>
+            <div class="card">
+                <h3>Evolução das vendas</h3>
+                <canvas id="grafico-evolucao"></canvas>
+            </div>
+            <div class="card">
+                <h3>Frete por região</h3>
+                <canvas id="grafico-frete"></canvas>
+            </div>
+        </section>
+
+        <!-- Tabela Detalhada -->
+        <section class="card tabela-container">
+            <h3>Detalhamento das vendas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Região</th>
+                        <th>Estado</th>
+                        <th>Produto</th>
+                        <th>Data</th>
+                        <th>Quantidade</th>
+                        <th>Valor unitário</th>
+                        <th>Frete</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-corpo">
+                    <tr>
+                        <td colspan="8">Nenhum registro encontrado. Importe a planilha para começar.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        Dashboard de Vendas | Relatório Gerencial
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
